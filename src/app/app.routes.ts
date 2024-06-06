@@ -18,6 +18,7 @@ export const routes: Routes = [
   {
     path: 'location',
     component: LocationComponent,
+    canActivate: [characterGuard],
     resolve: { locations: locationResolver },
   },
   { path: 'episode', component: EpisodeComponent },

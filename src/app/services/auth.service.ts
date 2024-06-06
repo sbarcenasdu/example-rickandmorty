@@ -25,12 +25,6 @@ export class AuthService {
     }
   }
 
-
-
-
-
-
-
   login() {
     this.isAuthenticated = true;
     localStorage.setItem('isAuthenticated', 'true');

@@ -1,6 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { LocationService } from '../../services/location.service';
 import { Location } from '../../models/location';
+import { ActivatedRoute } from '@angular/router';
+import { LoaderService } from '../../services/loader.service';
 
 @Component({
   selector: 'app-location',
@@ -62,7 +64,7 @@ import { Location } from '../../models/location';
   styles: `
   :host{
     display: block;
-    min-height: 70vh;
+    // min-height: 70vh;
   }
   button{
     background-color: #4CAF50;
@@ -83,7 +85,9 @@ import { Location } from '../../models/location';
   `,
 })
 export class LocationComponent {
-  private locationService = inject(LocationService);
+  private route = inject(ActivatedRoute);
+  private loaderService = inject(LoaderService);
+
   locations: (Location & { showAllResidents: boolean })[] = [];
   locationsKeys: string[] = [];
 
@@ -92,18 +96,23 @@ export class LocationComponent {
   }
 
   getAllLocation() {
-    this.locationService.getAllLocation().subscribe({
+    this.route.data.subscribe({
       next: (data) => {
-        this.locationsKeys = data.length > 0 ? Object.keys(data[0]) : [];
-        this.locations = data.map((location: any) => ({
+        setTimeout(() =>{const locations = data['locations'] as Location[];
+        this.locationsKeys = locations.length > 0 ? Object.keys(locations[0]) : [];
+        this.locations = locations.map((location: any) => ({
           ...location,
           showAllResidents: false,
-        }));
+        }));}, 2000);
       },
       error: (error) => {
-        console.log(error);
+        console.error(error);
+        alert(
+          'Hubo un error al cargar las ubicaciones. Por favor, inténtalo de nuevo más tarde.'
+        );
       },
     });
+    this.loaderService.hide();
   }
 
   toggleResidentsView(location: Location & { showAllResidents: boolean }) {

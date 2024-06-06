@@ -5,11 +5,14 @@ import { Location } from '../models/location';
 import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { LoaderService } from '../services/loader.service';
 
 export const locationResolver: ResolveFn<Location[]> = (route, state) => {
   const locationService = inject(LocationService);
   const router = inject(Router);
+  const loaderService = inject(LoaderService);
 
+  loaderService.show();
   return locationService.getAllLocation().pipe(
     catchError((error) => {
       console.error('Error fetching locations:', error);
