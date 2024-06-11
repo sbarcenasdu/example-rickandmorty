@@ -10,14 +10,14 @@ export const characterGuard: CanActivateFn = (route, state) => {
   console.log('Guard is checking authentication');
 
   if (authService.checkAuthentication()) {
-    loaderService.hide();
+    // loaderService.hide();
     return true;
   } else {
     // Aquí podrías redirigir al usuario a la página de inicio de sesión
     console.log('Acceso denegado. Redirigiendo al inicio de sesión.');
     // alert('Debes iniciar sesión para acceder a esta página.');
     router.navigate(['/']);
-    loaderService.hide();
+    // loaderService.hide();
     return false;
   }
 };

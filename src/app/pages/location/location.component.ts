@@ -112,7 +112,7 @@ export class LocationComponent {
         );
       },
     });
-    this.loaderService.hide();
+    // this.loaderService.hide();
   }
 
   toggleResidentsView(location: Location & { showAllResidents: boolean }) {

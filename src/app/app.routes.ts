@@ -11,10 +11,13 @@ import { NestedFormComponent } from './components/nested-form/nested-form.compon
 import { PipesComponent } from './components/pipes/pipes.component';
 import { CustomPipesComponent } from './components/custom-pipes/custom-pipes.component';
 import { locationResolver } from './resolvers/location.resolver';
+import { BasicAnimationsComponent } from './shared/basic-animations/basic-animations.component';
+import { CharacterDetailComponent } from './pages/character-detail/character-detail.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'character', component: CharacterComponent },
+  { path: 'character/:id', component: CharacterDetailComponent },
   {
     path: 'location',
     component: LocationComponent,
@@ -28,5 +31,9 @@ export const routes: Routes = [
   { path: 'nested', component: NestedFormComponent },
   { path: 'pipes', component: PipesComponent },
   { path: 'custom-pipes', component: CustomPipesComponent },
+  { path: 'basic', component: BasicAnimationsComponent },
+
+
+
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

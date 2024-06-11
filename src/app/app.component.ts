@@ -5,6 +5,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { LoaderService } from './services/loader.service';
 import { AsyncPipe } from '@angular/common';
+import { fadeInAnimation, rotateAnimation } from './basic-animations/animations';
 
 @Component({
   selector: 'app-root',
@@ -18,11 +19,11 @@ import { AsyncPipe } from '@angular/common';
   ],
   template: `
     <app-header />
-    <router-outlet />
+    <div class="min-h-[70vh]"><router-outlet /></div>
     @if(isLoading$ | async){<app-loader />}
     <app-footer />
   `,
-  styleUrl: './app.component.css',
+  styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'rickandmorty';

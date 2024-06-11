@@ -12,7 +12,7 @@ export const locationResolver: ResolveFn<Location[]> = (route, state) => {
   const router = inject(Router);
   const loaderService = inject(LoaderService);
 
-  loaderService.show();
+  // loaderService.show();
   return locationService.getAllLocation().pipe(
     catchError((error) => {
       console.error('Error fetching locations:', error);
