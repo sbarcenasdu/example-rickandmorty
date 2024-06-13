@@ -47,27 +47,24 @@ import {
     <p>Optimización</p>
     <div class="animated-box cursor-pointer" [@bad]="badState" (click)="toggleBad()" ></div>
     <div class="animated-box cursor-pointer" [@optimized]="optimizedState" (click)="toggleOptimized()" ></div>
-
-
-
-  `,
-  styles: `
-  :host{
-    display: block;
-    margin: 20px;
-  }
-  .animated-box {
-  width: 100px;
-  height: 100px;
-  border-radius: 10px;
-  background-color: lightblue;
-  margin: 10px;
-  display: block;
-  position: relative;
-}
+    <div class="animated-box fade-in"></div>
+    <div class="animated-box slide-in-left"></div>
+    <div class="animated-box slide-in-right"></div>
+    <div class="animated-box bounce"></div>
+    <div class="animated-box rotate"></div>
+    <div class="animated-box spin"></div>
+    <div class="animated-box blink"></div>
+    <div class="animated-box swing"></div>
+    <div class="animated-box fade-scale"></div>
+    <br />
+    <div class="container">
+      <div class="box"></div>
+    </div>
 
 
   `,
+  styleUrl: './basic-animations.component.css',
+
   animations: [
     fadeInAnimation,
     bounceAnimation,
