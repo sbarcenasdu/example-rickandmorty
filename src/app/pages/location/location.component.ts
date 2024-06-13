@@ -64,7 +64,6 @@ import { LoaderService } from '../../services/loader.service';
   styles: `
   :host{
     display: block;
-    // min-height: 70vh;
   }
   button{
     background-color: #4CAF50;

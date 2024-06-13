@@ -3,14 +3,15 @@ import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Character } from '../models/character';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CharacterService {
   private http = inject(HttpClient);
-  private apiUrl = 'https://rickandmortyapi.com/api/character';
-
+  // private apiUrl = 'https://rickandmortyapi.com/api/character';
+  private apiUrl = environment.apiBaseUrl + environment.endpoints.characters;
   getAllCharacter(): Observable<any> {
     return this.http.get(this.apiUrl).pipe(
       map((res: any) => {
