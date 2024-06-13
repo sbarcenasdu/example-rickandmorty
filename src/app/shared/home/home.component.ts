@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   imports: [],
   template: `
     <p>
-      home works!
+      home works from netlify!
     </p>
     <br>
     <button (click)=login()>Login</button>
